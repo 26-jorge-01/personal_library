@@ -1,0 +1,155 @@
+required_fields:
+  - nombre_entidad
+  - nit_entidad
+  - departamento
+  - ciudad
+  - localizaci_n
+  - orden
+  - sector
+  - rama
+  - entidad_centralizada
+  - proceso_de_compra
+  - id_contrato
+  - referencia_del_contrato
+  - estado_contrato
+  - codigo_de_categoria_principal
+  - descripcion_del_proceso
+  - tipo_de_contrato
+  - modalidad_de_contratacion
+  - justificacion_modalidad_de
+  - fecha_de_firma
+  - fecha_de_inicio_del_contrato
+  - fecha_de_fin_del_contrato
+  - condiciones_de_entrega
+  - tipodocproveedor
+  - documento_proveedor
+  - proveedor_adjudicado
+  - es_grupo
+  - es_pyme
+  - habilita_pago_adelantado
+  - liquidaci_n
+  - obligaci_n_ambiental
+  - obligaciones_postconsumo
+  - reversion
+  - origen_de_los_recursos
+  - destino_gasto
+  - valor_del_contrato
+  - valor_de_pago_adelantado
+  - valor_facturado
+  - valor_pendiente_de_pago
+  - valor_pagado
+  - valor_amortizado
+  - valor_pendiente_de
+  - valor_pendiente_de_ejecucion
+  - estado_bpin
+  - c_digo_bpin
+  - anno_bpin
+  - saldo_cdp
+  - saldo_vigencia
+  - espostconflicto
+  - dias_adicionados
+  - puntos_del_acuerdo
+  - pilares_del_acuerdo
+  - urlproceso
+  - nombre_representante_legal
+  - nacionalidad_representante_legal
+  - domicilio_representante_legal
+  - tipo_de_identificaci_n_representante_legal
+  - identificaci_n_representante_legal
+  - g_nero_representante_legal
+  - presupuesto_general_de_la_nacion_pgn
+  - sistema_general_de_participaciones
+  - sistema_general_de_regal_as
+  - recursos_propios_alcald_as_gobernaciones_y_resguardos_ind_genas_
+  - recursos_de_credito
+  - recursos_propios
+  - ultima_actualizacion
+  - codigo_entidad
+  - codigo_proveedor
+  - fecha_inicio_liquidacion
+  - fecha_fin_liquidacion
+  - objeto_del_contrato
+  - duraci_n_del_contrato
+  - nombre_del_banco
+  - tipo_de_cuenta
+  - n_mero_de_cuenta
+  - el_contrato_puede_ser_prorrogado
+  - nombre_ordenador_del_gasto
+  - tipo_de_documento_ordenador_del_gasto
+  - n_mero_de_documento_ordenador_del_gasto
+  - nombre_supervisor
+  - tipo_de_documento_supervisor
+  - n_mero_de_documento_supervisor
+  - nombre_ordenador_de_pago
+  - tipo_de_documento_ordenador_de_pago
+  - n_mero_de_documento_ordenador_de_pago
+  - fecha_de_notificaci_n_de_prorrogaci_n
+
+expected_types:
+# Definir los tipos de datos desde aqui
+  fecha_de_firma: datetime64
+  fecha_de_inicio_del_contrato: datetime64
+  fecha_de_fin_del_contrato: datetime64
+  fecha_de_notificaci_n_de_prorrogaci_n: datetime64
+
+rules:
+  total:
+    rule: range
+    min: 0
+    max: 1000000
+  total_2: unique        # Ejemplo: campo que debe ser único
+  descripcion:
+    rule: string_length
+    min_length: 5
+    max_length: 255
+  email:
+    rule: regex
+    pattern: "^[\\w\\.-]+@[\\w\\.-]+\\.\\w+$"
+  campo_importante: not_null
+  fecha: not_future
+  # También podrías incluir otras reglas simples:
+  # campo_extra: positive
+
+inter_field_rules:
+  - rule: date_order
+    fields: [fecha_inicio, fecha_fin]
+  - objeto_del_contrato
+  - duraci_n_del_contrato
+  - nombre_del_banco
+  - tipo_de_cuenta
+  - n_mero_de_cuenta
+  - el_contrato_puede_ser_prorrogado
+  - nombre_ordenador_del_gasto
+  - tipo_de_documento_ordenador_del_gasto
+  - n_mero_de_documento_ordenador_del_gasto
+  - nombre_supervisor
+       'tipo_de_documento_supervisor', 'n_mero_de_documento_supervisor',
+       'nombre_ordenador_de_pago', 'tipo_de_documento_ordenador_de_pago',
+       'n_mero_de_documento_ordenador_de_pago',
+       'fecha_de_notificaci_n_de_prorrogaci_n'
+
+expected_types:
+  fecha: datetime64
+  total: float64
+
+rules:
+  total:
+    rule: range
+    min: 0
+    max: 1000000
+  total_2: unique        # Ejemplo: campo que debe ser único
+  descripcion:
+    rule: string_length
+    min_length: 5
+    max_length: 255
+  email:
+    rule: regex
+    pattern: "^[\\w\\.-]+@[\\w\\.-]+\\.\\w+$"
+  campo_importante: not_null
+  fecha: not_future
+  # También podrías incluir otras reglas simples:
+  # campo_extra: positive
+
+inter_field_rules:
+  - rule: date_order
+    fields: [fecha_inicio, fecha_fin]
