@@ -1,5 +1,5 @@
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timezone
 import uuid
 import os
 import logging
@@ -21,7 +21,7 @@ class MetadataLogger:
         Registra metadatos de un proceso de ingesta.
         """
         metadata["uuid"] = str(uuid.uuid4())
-        metadata["timestamp"] = datetime.now(datetime.timezone.utc).isoformat()
+        metadata["timestamp"] = datetime.now(timezone.utc).isoformat()
         self.records.append(metadata)
         self.logger.debug("Logged metadata: %s", metadata)
 
@@ -30,5 +30,5 @@ class MetadataLogger:
         Guarda todos los registros de metadatos en un archivo Parquet.
         """
         df = pd.DataFrame(self.records)
-        df.to_parquet(self.report_path, index=False)
+        df.to_parquet(self.report_path, index=False, engine="pyarrow")
         self.logger.info("Metadata log saved to %s", self.report_path)
