@@ -21,12 +21,12 @@ Esta estructura permite reutilizar, escalar y mantener de manera efectiva todo e
 ## Estructura del Proyecto
 
 project_root/
-|-- demos/ # Notebooks y scripts demostrativos para validar y ejemplificar el uso de cada componente.
-|-- ingestion/ # Módulos para la ingesta de datos. Incluye conectores (por ejemplo, desde Socrata) y motores de gobernanza.
-|-- loaders/ # Conectores y módulos para cargar datos desde diversas fuentes (archivos, bases de datos, etc.).
-|-- transformers/ # Componentes para transformar y procesar datos: limpieza, normalización, enriquecimiento, etc.
-|-- utils/ # Utilidades y funciones auxiliares compartidas por todo el proyecto (logging, configuración, helpers).
-&-- README.md # Este documento, que explica la visión, estructura y uso del proyecto.
+├── demos/ # Notebooks y scripts demostrativos para validar y ejemplificar el uso de cada componente. 
+├── ingestion/ # Módulos para la ingesta de datos. Incluye conectores (por ejemplo, desde Socrata) y motores de gobernanza. 
+├── loaders/ # Conectores y módulos para cargar datos desde diversas fuentes (archivos, bases de datos, etc.). 
+├── transformers/ # Componentes para transformar y procesar datos: limpieza, normalización, enriquecimiento, etc. 
+├── utils/ # Utilidades y funciones auxiliares compartidas por todo el proyecto (logging, configuración, helpers). 
+└── README.md # Este documento, que explica la visión, estructura y uso del proyecto.
 
 Cada carpeta está pensada para ser escalable. Por ejemplo, mientras que `ingestion` se encarga de la extracción y validación de datos, las carpetas `loaders`, `transformers` y `utils` se ampliarán conforme se desarrollen nuevas funcionalidades.
 

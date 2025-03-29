@@ -1,69 +1,89 @@
-from ingestion.governance import rules
+import os
+import pandas as pd
+from ingestion.governance.engine_policy_autogen import (
+    get_or_create_policy,
+    infer_column_type,
+    define_integrity
+)
+from datetime import datetime
+import uuid
+
+PRIVACY_LEVELS = {"high": 3, "medium": 2, "low": 1}
+SECURITY_ORDER = {"encrypted": 3, "masked": 2, "none": 1}
 
 class GovernanceEngine:
-    """
-    Motor de gobernanza que aplica validaciones sobre el DataFrame
-    utilizando políticas configuradas, tanto para reglas de campo individual
-    como para reglas que involucran múltiples campos.
-    """
-    def __init__(self, df, policy: dict):
+    def __init__(self, df: pd.DataFrame, policy_filename: str):
         self.df = df
-        self.policy = policy
-        self.report = {"errors": [], "warnings": []}
+        self.policy = get_or_create_policy(df, policy_filename)
+        self.enforcement = self.policy.get("enforcement_requirements", {})
+        self.report = []
+        self.execution_id = str(uuid.uuid4())
+        self.timestamp = datetime.utcnow().isoformat()
 
-    def validate(self):
-        self._check_required_fields()
-        self._check_types()
-        self._apply_rules()
-        self._apply_inter_field_rules()
-        return self.df, self.report
+    def _add_violation(self, field, issue, severity="warning"):
+        self.report.append({
+            "field": field,
+            "issue": issue,
+            "severity": severity,
+            "execution_id": self.execution_id,
+            "timestamp": self.timestamp
+        })
 
-    def _check_required_fields(self):
-        for field in self.policy.get("required_fields", []):
-            if field not in self.df.columns:
-                self.report["errors"].append(f"Falta el campo obligatorio: {field}")
+    def validate_field(self, field_policy):
+        col_name = field_policy.get("field_name")
+        if col_name not in self.df.columns:
+            self._add_violation(col_name, "Field is missing from the dataset.", "error")
+            return
 
-    def _check_types(self):
-        expected_types = self.policy.get("expected_types", {})
-        for field, expected in expected_types.items():
-            if field in self.df.columns:
-                actual = str(self.df[field].dtype)
-                if expected not in actual:
-                    self.report["warnings"].append(
-                        f"El campo '{field}' tiene tipo '{actual}', se esperaba '{expected}'."
-                    )
+        series = self.df[col_name]
+        inferred_type = infer_column_type(series)
+        expected_type = field_policy.get("type")
+        if inferred_type != expected_type:
+            self._add_violation(col_name, f"Expected type '{expected_type}' but got '{inferred_type}'.")
 
-    def _apply_rules(self):
-        # Reglas definidas para cada campo
-        for field, rule_def in self.policy.get("rules", {}).items():
-            if isinstance(rule_def, str):
-                # Regla simple: solo se indica el nombre
-                rule_name = rule_def
-                func = getattr(rules, f"rule_{rule_name}", None)
-                if callable(func):
-                    result = func(self.df, field)
-                    if result:
-                        self.report["warnings"].append(result)
-            elif isinstance(rule_def, dict):
-                # Regla con parámetros: se extrae el nombre y se pasan parámetros extra
-                rule_name = rule_def.get("rule")
-                if not rule_name:
-                    continue
-                func = getattr(rules, f"rule_{rule_name}", None)
-                if callable(func):
-                    params = {k: v for k, v in rule_def.items() if k != "rule"}
-                    result = func(self.df, field, **params)
-                    if result:
-                        self.report["warnings"].append(result)
+        if "no_nulls" in field_policy.get("rules", []):
+            if series.isnull().any():
+                self._add_violation(col_name, "Contains null values.")
 
-    def _apply_inter_field_rules(self):
-        # Reglas que involucran más de un campo
-        for rule_def in self.policy.get("inter_field_rules", []):
-            rule_name = rule_def.get("rule")
-            fields = rule_def.get("fields")
-            func = getattr(rules, f"rule_{rule_name}", None)
-            if callable(func):
-                params = {k: v for k, v in rule_def.items() if k not in ["rule", "fields"]}
-                result = func(self.df, fields, **params)
-                if result:
-                    self.report["warnings"].append(result)
+        integrity = define_integrity(series)
+        if integrity.get("contains_outliers"):
+            self._add_violation(col_name, "Contains outliers.")
+        if field_policy.get("critical_field") and not integrity.get("unique"):
+            self._add_violation(col_name, "Critical field is not unique.")
+
+        for rule in self.enforcement.get("mandatory_rules", []):
+            if rule not in field_policy.get("rules", []):
+                self._add_violation(col_name, f"Missing mandatory rule '{rule}'.")
+
+        required_privacy = self.enforcement.get("privacy_enforcement", "medium")
+        if field_policy.get("data_subject"):
+            field_privacy = field_policy.get("privacy_level", "low")
+            if PRIVACY_LEVELS.get(field_privacy, 0) < PRIVACY_LEVELS.get(required_privacy, 0):
+                self._add_violation(col_name, f"Privacy level '{field_privacy}' is below required '{required_privacy}'.", "error")
+
+        required_security = self.enforcement.get("security_baseline", "masked")
+        field_security = field_policy.get("security", "none")
+        if SECURITY_ORDER.get(field_security, 0) < SECURITY_ORDER.get(required_security, 0):
+            self._add_violation(col_name, f"Security level '{field_security}' is below baseline '{required_security}'.")
+
+        allowed_transparency = self.enforcement.get("allowed_transparency", ["internal", "public"])
+        if field_policy.get("transparency", "internal") not in allowed_transparency:
+            self._add_violation(col_name, f"Transparency '{field_policy.get('transparency')}' not allowed.")
+
+        required_frameworks = set(self.enforcement.get("framework_enforcement", []))
+        field_compliance = set(field_policy.get("compliance_tags", []))
+        if field_policy.get("data_subject") and not required_frameworks.issubset(field_compliance):
+            self._add_violation(col_name, f"Missing required compliance frameworks: {required_frameworks - field_compliance}.")
+
+    def validate_global(self):
+        dataset_risk = self.policy.get("compliance", {}).get("risk_level", "low")
+        accepted_risk = self.enforcement.get("risk_acceptance", "medium")
+        risk_order = {"low": 1, "medium": 2, "high": 3}
+        if risk_order.get(dataset_risk, 0) > risk_order.get(accepted_risk, 0):
+            self._add_violation("__global__", f"Dataset risk level '{dataset_risk}' exceeds accepted '{accepted_risk}'.", "error")
+
+    def run_policy_checks(self):
+        for field in self.policy.get("fields", []):
+            self.validate_field(field)
+        self.validate_global()
+        return self.report

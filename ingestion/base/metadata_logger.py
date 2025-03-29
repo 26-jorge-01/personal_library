@@ -25,10 +25,42 @@ class MetadataLogger:
         self.records.append(metadata)
         self.logger.debug("Logged metadata: %s", metadata)
 
+    def log_error(self, error_msg: str, context: dict = None) -> None:
+        """
+        Registra un error crítico con contexto opcional.
+        """
+        metadata = {
+            "uuid": str(uuid.uuid4()),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "status": "error",
+            "message": error_msg,
+            "context": context or {}
+        }
+        self.records.append(metadata)
+        self.logger.error("Error registrado: %s", metadata)
+
     def save(self) -> None:
         """
         Guarda todos los registros de metadatos en un archivo Parquet.
+        Elimina duplicados por UUID antes de guardar.
         """
         df = pd.DataFrame(self.records)
+        if os.path.exists(self.report_path):
+            try:
+                existing_df = pd.read_parquet(self.report_path)
+                df = pd.concat([existing_df, df], ignore_index=True)
+            except Exception as e:
+                self.logger.warning("No se pudo leer el archivo existente: %s", e)
+        df = df.drop_duplicates(subset="uuid")
         df.to_parquet(self.report_path, index=False, engine="pyarrow")
         self.logger.info("Metadata log saved to %s", self.report_path)
+
+    def load(self) -> pd.DataFrame:
+        """
+        Carga registros previos del archivo de log.
+        """
+        if os.path.exists(self.report_path):
+            return pd.read_parquet(self.report_path)
+        else:
+            self.logger.warning("Archivo de log no encontrado: %s", self.report_path)
+            return pd.DataFrame()

@@ -2,6 +2,22 @@ import pandas as pd
 import re
 import numpy as np
 
+AVAILABLE_RULES = [
+    "positive",
+    "not_future",
+    "not_null",
+    "unique",
+    "range",
+    "allowed_values",
+    "regex",
+    "string_length",
+    "date_order",
+    "foreign_key",
+    "outlier",
+    "distribution"
+]
+
+
 def rule_positive(df: pd.DataFrame, field: str, **params) -> str:
     try:
         if (df[field].astype(float) < 0).any():

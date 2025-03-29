@@ -1,44 +1,1654 @@
-required_fields:
-  - fecha_de_firma
-
-expected_types:
-# Definir los tipos de datos desde aqui
-  fecha_de_firma: datetime64
-
-rules:
-  fecha_de_firma: not_null
-  fecha_de_firma: not_future
-  # total:
-  #   rule: range
-  #   min: 0
-  #   max: 1000000
-  # total_2: unique        # Ejemplo: campo que debe ser único
-  # descripcion:
-  #   rule: string_length
-  #   min_length: 5
-  #   max_length: 255
-  # email:
-  #   rule: regex
-  #   pattern: "^[\\w\\.-]+@[\\w\\.-]+\\.\\w+$"
-  # campo_importante: not_null
-  # fecha: not_future
-  # # También podrías incluir otras reglas simples:
-  # # campo_extra: positive
-
-# inter_field_rules:
-#   - rule: date_order
-#     fields: [fecha_de_firma]
-#   - objeto_del_contrato
-#   - duraci_n_del_contrato
-#   - nombre_del_banco
-#   - tipo_de_cuenta
-#   - n_mero_de_cuenta
-#   - el_contrato_puede_ser_prorrogado
-#   - nombre_ordenador_del_gasto
-#   - tipo_de_documento_ordenador_del_gasto
-#   - n_mero_de_documento_ordenador_del_gasto
-#   - nombre_supervisor
-#        'tipo_de_documento_supervisor', 'n_mero_de_documento_supervisor',
-#        'nombre_ordenador_de_pago', 'tipo_de_documento_ordenador_de_pago',
-#        'n_mero_de_documento_ordenador_de_pago',
-#        'fecha_de_notificaci_n_de_prorrogaci_n'
+dataset_metadata:
+  columns: 85
+  rows_sampled: 100
+  generated_by: default_policy_generator
+  generated_on: '2025-03-29T22:30:23.876640Z'
+  data_source: inferred
+  schema_version: '1.0'
+  language: undetected
+compliance:
+  compliance_frameworks:
+  - GDPR
+  risk_level: high
+enforcement_requirements:
+  mandatory_rules:
+  - no_nulls
+  - valid_date_format
+  required_fields: []
+  privacy_enforcement: medium
+  security_baseline: masked
+  allowed_transparency:
+  - internal
+  - public
+  risk_acceptance: medium
+  framework_enforcement:
+  - GDPR
+fields:
+- field_name: nombre_entidad
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'nombre_entidad' classified as string with privacy=high based
+    on naming and content analysis.
+- field_name: nit_entidad
+  type: integer
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'nit_entidad' classified as integer with privacy=high based
+    on naming and content analysis.
+- field_name: departamento
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'departamento' classified as string with privacy=low based
+    on naming and content analysis.
+- field_name: ciudad
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'ciudad' classified as string with privacy=low based on naming
+    and content analysis.
+- field_name: localizaci_n
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'localizaci_n' classified as string with privacy=low based
+    on naming and content analysis.
+- field_name: orden
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'orden' classified as string with privacy=low based on naming
+    and content analysis.
+- field_name: sector
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'sector' classified as string with privacy=low based on naming
+    and content analysis.
+- field_name: rama
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'rama' classified as string with privacy=low based on naming
+    and content analysis.
+- field_name: entidad_centralizada
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'entidad_centralizada' classified as string with privacy=high
+    based on naming and content analysis.
+- field_name: proceso_de_compra
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: true
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'proceso_de_compra' classified as string with privacy=high
+    based on naming and content analysis.
+- field_name: id_contrato
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: true
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'id_contrato' classified as string with privacy=high based
+    on naming and content analysis.
+- field_name: referencia_del_contrato
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'referencia_del_contrato' classified as string with privacy=high
+    based on naming and content analysis.
+- field_name: estado_contrato
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'estado_contrato' classified as string with privacy=low based
+    on naming and content analysis.
+- field_name: codigo_de_categoria_principal
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'codigo_de_categoria_principal' classified as string with privacy=high
+    based on naming and content analysis.
+- field_name: descripcion_del_proceso
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'descripcion_del_proceso' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: tipo_de_contrato
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'tipo_de_contrato' classified as string with privacy=low based
+    on naming and content analysis.
+- field_name: modalidad_de_contratacion
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'modalidad_de_contratacion' classified as string with privacy=high
+    based on naming and content analysis.
+- field_name: justificacion_modalidad_de
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'justificacion_modalidad_de' classified as string with privacy=high
+    based on naming and content analysis.
+- field_name: fecha_de_firma
+  type: datetime
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'fecha_de_firma' classified as datetime with privacy=low based
+    on naming and content analysis.
+- field_name: fecha_de_inicio_del_contrato
+  type: datetime
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'fecha_de_inicio_del_contrato' classified as datetime with
+    privacy=low based on naming and content analysis.
+- field_name: fecha_de_fin_del_contrato
+  type: datetime
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'fecha_de_fin_del_contrato' classified as datetime with privacy=low
+    based on naming and content analysis.
+- field_name: condiciones_de_entrega
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'condiciones_de_entrega' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: tipodocproveedor
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'tipodocproveedor' classified as string with privacy=low based
+    on naming and content analysis.
+- field_name: documento_proveedor
+  type: integer
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: true
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'documento_proveedor' classified as integer with privacy=high
+    based on naming and content analysis.
+- field_name: proveedor_adjudicado
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: true
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'proveedor_adjudicado' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: es_grupo
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'es_grupo' classified as string with privacy=low based on naming
+    and content analysis.
+- field_name: es_pyme
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'es_pyme' classified as string with privacy=low based on naming
+    and content analysis.
+- field_name: habilita_pago_adelantado
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'habilita_pago_adelantado' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: liquidaci_n
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'liquidaci_n' classified as string with privacy=high based
+    on naming and content analysis.
+- field_name: obligaci_n_ambiental
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'obligaci_n_ambiental' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: obligaciones_postconsumo
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'obligaciones_postconsumo' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: reversion
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'reversion' classified as string with privacy=low based on
+    naming and content analysis.
+- field_name: origen_de_los_recursos
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'origen_de_los_recursos' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: destino_gasto
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'destino_gasto' classified as string with privacy=low based
+    on naming and content analysis.
+- field_name: valor_del_contrato
+  type: integer
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'valor_del_contrato' classified as integer with privacy=high
+    based on naming and content analysis.
+- field_name: valor_de_pago_adelantado
+  type: integer
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'valor_de_pago_adelantado' classified as integer with privacy=low
+    based on naming and content analysis.
+- field_name: valor_facturado
+  type: integer
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'valor_facturado' classified as integer with privacy=high based
+    on naming and content analysis.
+- field_name: valor_pendiente_de_pago
+  type: integer
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'valor_pendiente_de_pago' classified as integer with privacy=high
+    based on naming and content analysis.
+- field_name: valor_pagado
+  type: integer
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'valor_pagado' classified as integer with privacy=high based
+    on naming and content analysis.
+- field_name: valor_amortizado
+  type: integer
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'valor_amortizado' classified as integer with privacy=low based
+    on naming and content analysis.
+- field_name: valor_pendiente_de
+  type: integer
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'valor_pendiente_de' classified as integer with privacy=low
+    based on naming and content analysis.
+- field_name: valor_pendiente_de_ejecucion
+  type: integer
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'valor_pendiente_de_ejecucion' classified as integer with privacy=high
+    based on naming and content analysis.
+- field_name: estado_bpin
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'estado_bpin' classified as string with privacy=low based on
+    naming and content analysis.
+- field_name: c_digo_bpin
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'c_digo_bpin' classified as string with privacy=low based on
+    naming and content analysis.
+- field_name: anno_bpin
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'anno_bpin' classified as string with privacy=low based on
+    naming and content analysis.
+- field_name: saldo_cdp
+  type: integer
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'saldo_cdp' classified as integer with privacy=high based on
+    naming and content analysis.
+- field_name: saldo_vigencia
+  type: integer
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'saldo_vigencia' classified as integer with privacy=low based
+    on naming and content analysis.
+- field_name: espostconflicto
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'espostconflicto' classified as string with privacy=low based
+    on naming and content analysis.
+- field_name: dias_adicionados
+  type: integer
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'dias_adicionados' classified as integer with privacy=low based
+    on naming and content analysis.
+- field_name: puntos_del_acuerdo
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'puntos_del_acuerdo' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: pilares_del_acuerdo
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'pilares_del_acuerdo' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: urlproceso
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'urlproceso' classified as string with privacy=high based on
+    naming and content analysis.
+- field_name: nombre_representante_legal
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: true
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'nombre_representante_legal' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: nacionalidad_representante_legal
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'nacionalidad_representante_legal' classified as string with
+    privacy=high based on naming and content analysis.
+- field_name: domicilio_representante_legal
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'domicilio_representante_legal' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: tipo_de_identificaci_n_representante_legal
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'tipo_de_identificaci_n_representante_legal' classified as
+    string with privacy=high based on naming and content analysis.
+- field_name: identificaci_n_representante_legal
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'identificaci_n_representante_legal' classified as string with
+    privacy=high based on naming and content analysis.
+- field_name: g_nero_representante_legal
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'g_nero_representante_legal' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: presupuesto_general_de_la_nacion_pgn
+  type: integer
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'presupuesto_general_de_la_nacion_pgn' classified as integer
+    with privacy=low based on naming and content analysis.
+- field_name: sistema_general_de_participaciones
+  type: integer
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'sistema_general_de_participaciones' classified as integer
+    with privacy=high based on naming and content analysis.
+- field_name: sistema_general_de_regal_as
+  type: integer
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'sistema_general_de_regal_as' classified as integer with privacy=low
+    based on naming and content analysis.
+- field_name: recursos_propios_alcald_as_gobernaciones_y_resguardos_ind_genas_
+  type: integer
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'recursos_propios_alcald_as_gobernaciones_y_resguardos_ind_genas_'
+    classified as integer with privacy=high based on naming and content analysis.
+- field_name: recursos_de_credito
+  type: integer
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'recursos_de_credito' classified as integer with privacy=low
+    based on naming and content analysis.
+- field_name: recursos_propios
+  type: integer
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'recursos_propios' classified as integer with privacy=high
+    based on naming and content analysis.
+- field_name: ultima_actualizacion
+  type: datetime
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'ultima_actualizacion' classified as datetime with privacy=low
+    based on naming and content analysis.
+- field_name: codigo_entidad
+  type: integer
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'codigo_entidad' classified as integer with privacy=high based
+    on naming and content analysis.
+- field_name: codigo_proveedor
+  type: integer
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: true
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'codigo_proveedor' classified as integer with privacy=high
+    based on naming and content analysis.
+- field_name: fecha_inicio_liquidacion
+  type: datetime
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'fecha_inicio_liquidacion' classified as datetime with privacy=high
+    based on naming and content analysis.
+- field_name: fecha_fin_liquidacion
+  type: datetime
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'fecha_fin_liquidacion' classified as datetime with privacy=high
+    based on naming and content analysis.
+- field_name: objeto_del_contrato
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'objeto_del_contrato' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: duraci_n_del_contrato
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'duraci_n_del_contrato' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: nombre_del_banco
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'nombre_del_banco' classified as string with privacy=low based
+    on naming and content analysis.
+- field_name: tipo_de_cuenta
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'tipo_de_cuenta' classified as string with privacy=low based
+    on naming and content analysis.
+- field_name: n_mero_de_cuenta
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'n_mero_de_cuenta' classified as string with privacy=high based
+    on naming and content analysis.
+- field_name: el_contrato_puede_ser_prorrogado
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'el_contrato_puede_ser_prorrogado' classified as string with
+    privacy=low based on naming and content analysis.
+- field_name: nombre_ordenador_del_gasto
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'nombre_ordenador_del_gasto' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: tipo_de_documento_ordenador_del_gasto
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'tipo_de_documento_ordenador_del_gasto' classified as string
+    with privacy=low based on naming and content analysis.
+- field_name: n_mero_de_documento_ordenador_del_gasto
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'n_mero_de_documento_ordenador_del_gasto' classified as string
+    with privacy=high based on naming and content analysis.
+- field_name: nombre_supervisor
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'nombre_supervisor' classified as string with privacy=low based
+    on naming and content analysis.
+- field_name: tipo_de_documento_supervisor
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'tipo_de_documento_supervisor' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: n_mero_de_documento_supervisor
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'n_mero_de_documento_supervisor' classified as string with
+    privacy=high based on naming and content analysis.
+- field_name: nombre_ordenador_de_pago
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'nombre_ordenador_de_pago' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: tipo_de_documento_ordenador_de_pago
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'tipo_de_documento_ordenador_de_pago' classified as string
+    with privacy=low based on naming and content analysis.
+- field_name: n_mero_de_documento_ordenador_de_pago
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'n_mero_de_documento_ordenador_de_pago' classified as string
+    with privacy=low based on naming and content analysis.
+- field_name: fecha_de_notificaci_n_de_prorrogaci_n
+  type: datetime
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'fecha_de_notificaci_n_de_prorrogaci_n' classified as datetime
+    with privacy=low based on naming and content analysis.
