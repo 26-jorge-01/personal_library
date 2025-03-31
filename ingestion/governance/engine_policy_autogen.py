@@ -15,9 +15,17 @@ SENSITIVE_PATTERNS = {
     "id": re.compile(r"\d{6,10}")
 }
 
+# GDPR = General Data Protection Regulation
+# Se consideran identificadores personales como sensibles y sujetos a regulaciones de privacidad.
+# En este caso, se consideran términos relacionados con la identificación personal y la localización.
+# Se pueden incluir otros identificadores como el número de pasaporte, licencia de conducir, etc.
 GDPR_IDENTIFIERS = ["name", "email", "address", "location", "phone", "id"]
-HIPAA_IDENTIFIERS = ["ssn", "diagnosis", "treatment", "health", "insurance"]
 
+# HIPAA = Health Insurance Portability and Accountability Act
+# Se consideran identificadores personales como sensibles y sujetos a regulaciones de privacidad.
+# En este caso, se consideran términos relacionados con la salud y el tratamiento médico.
+# Se pueden incluir otros identificadores como el número de historia clínica, diagnóstico, tratamiento, etc.
+HIPAA_IDENTIFIERS = ["ssn", "diagnosis", "treatment", "health", "insurance"]
 
 def infer_column_type(series):
     if pd.api.types.is_integer_dtype(series):
@@ -63,7 +71,8 @@ def is_embedded_sensitive(series):
 
 
 def detect_outliers(series):
-    if not pd.api.types.is_numeric_dtype(series):
+    # Si la serie no es numérica o booleana, no se consideran outliers
+    if not pd.api.types.is_numeric_dtype(series) or pd.api.types.is_bool_dtype(series):
         return False
     q1 = series.quantile(0.25)
     q3 = series.quantile(0.75)

@@ -1,0 +1,768 @@
+dataset_metadata:
+  columns: 38
+  rows_sampled: 5
+  generated_by: default_policy_generator
+  generated_on: '2025-03-31T18:18:58.461324Z'
+  data_source: inferred
+  schema_version: '1.0'
+  language: undetected
+compliance:
+  compliance_frameworks:
+  - GDPR
+  risk_level: high
+enforcement_requirements:
+  mandatory_rules:
+  - no_nulls
+  - valid_date_format
+  required_fields: []
+  privacy_enforcement: medium
+  security_baseline: masked
+  allowed_transparency:
+  - internal
+  - public
+  risk_acceptance: medium
+  framework_enforcement:
+  - GDPR
+fields:
+- field_name: title
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: true
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'title' classified as string with privacy=low based on naming
+    and content analysis.
+- field_name: id
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: true
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: true
+  justification: Field 'id' classified as string with privacy=high based on naming
+    and content analysis.
+- field_name: language
+  type: string
+  required: true
+  rules: []
+  privacy_level: medium
+  security: masked
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: internal
+  retention_policy: default
+  critical_field: false
+  justification: Field 'language' classified as string with privacy=medium based on
+    naming and content analysis.
+- field_name: resultType
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'resultType' classified as string with privacy=low based on
+    naming and content analysis.
+- field_name: address_label
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: true
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'address_label' classified as string with privacy=high based
+    on naming and content analysis.
+- field_name: address_countryCode
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'address_countryCode' classified as string with privacy=high
+    based on naming and content analysis.
+- field_name: address_countryName
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'address_countryName' classified as string with privacy=high
+    based on naming and content analysis.
+- field_name: address_countyCode
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'address_countyCode' classified as string with privacy=high
+    based on naming and content analysis.
+- field_name: address_county
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'address_county' classified as string with privacy=high based
+    on naming and content analysis.
+- field_name: address_city
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'address_city' classified as string with privacy=high based
+    on naming and content analysis.
+- field_name: address_district
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: true
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'address_district' classified as string with privacy=high based
+    on naming and content analysis.
+- field_name: address_street
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: true
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'address_street' classified as string with privacy=high based
+    on naming and content analysis.
+- field_name: address_postalCode
+  type: integer
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: true
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'address_postalCode' classified as integer with privacy=high
+    based on naming and content analysis.
+- field_name: address_houseNumber
+  type: float
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'address_houseNumber' classified as float with privacy=high
+    based on naming and content analysis.
+- field_name: position_lat
+  type: float
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: true
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'position_lat' classified as float with privacy=low based on
+    naming and content analysis.
+- field_name: position_lng
+  type: float
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: true
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'position_lng' classified as float with privacy=low based on
+    naming and content analysis.
+- field_name: access_0_lat
+  type: float
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: true
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'access_0_lat' classified as float with privacy=low based on
+    naming and content analysis.
+- field_name: access_0_lng
+  type: float
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: true
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'access_0_lng' classified as float with privacy=low based on
+    naming and content analysis.
+- field_name: distance
+  type: integer
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: true
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'distance' classified as integer with privacy=high based on
+    naming and content analysis.
+- field_name: categories_0_id
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'categories_0_id' classified as string with privacy=high based
+    on naming and content analysis.
+- field_name: categories_0_name
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'categories_0_name' classified as string with privacy=high
+    based on naming and content analysis.
+- field_name: categories_0_primary
+  type: boolean
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'categories_0_primary' classified as boolean with privacy=low
+    based on naming and content analysis.
+- field_name: contacts_0_phone_0_value
+  type: integer
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: true
+    no_nulls: true
+    consistent_format: true
+    contains_outliers: true
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'contacts_0_phone_0_value' classified as integer with privacy=high
+    based on naming and content analysis.
+- field_name: contacts_0_www_0_value
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'contacts_0_www_0_value' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: openingHours_0_text_0
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'openingHours_0_text_0' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: openingHours_0_isOpen
+  type: float
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'openingHours_0_isOpen' classified as float with privacy=low
+    based on naming and content analysis.
+- field_name: openingHours_0_structured_0_start
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'openingHours_0_structured_0_start' classified as string with
+    privacy=high based on naming and content analysis.
+- field_name: openingHours_0_structured_0_duration
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'openingHours_0_structured_0_duration' classified as string
+    with privacy=low based on naming and content analysis.
+- field_name: openingHours_0_structured_0_recurrence
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'openingHours_0_structured_0_recurrence' classified as string
+    with privacy=low based on naming and content analysis.
+- field_name: contacts_0_www_1_value
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'contacts_0_www_1_value' classified as string with privacy=low
+    based on naming and content analysis.
+- field_name: contacts_0_email_0_value
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'contacts_0_email_0_value' classified as string with privacy=high
+    based on naming and content analysis.
+- field_name: payment_methods_0_id
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'payment_methods_0_id' classified as string with privacy=high
+    based on naming and content analysis.
+- field_name: payment_methods_0_currencies_0
+  type: string
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'payment_methods_0_currencies_0' classified as string with
+    privacy=low based on naming and content analysis.
+- field_name: payment_methods_0_accepted
+  type: float
+  required: true
+  rules: []
+  privacy_level: low
+  security: none
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags: []
+  data_subject: false
+  access_restriction: public
+  retention_policy: default
+  critical_field: false
+  justification: Field 'payment_methods_0_accepted' classified as float with privacy=low
+    based on naming and content analysis.
+- field_name: address_stateCode
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'address_stateCode' classified as string with privacy=high
+    based on naming and content analysis.
+- field_name: address_state
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'address_state' classified as string with privacy=high based
+    on naming and content analysis.
+- field_name: references_0_supplier_id
+  type: string
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'references_0_supplier_id' classified as string with privacy=high
+    based on naming and content analysis.
+- field_name: references_0_id
+  type: float
+  required: true
+  rules: []
+  privacy_level: high
+  security: encrypted
+  transparency: internal
+  integrity:
+    unique: false
+    no_nulls: false
+    consistent_format: true
+    contains_outliers: false
+  compliance_tags:
+  - GDPR
+  data_subject: true
+  access_restriction: restricted
+  retention_policy: default
+  critical_field: false
+  justification: Field 'references_0_id' classified as float with privacy=high based
+    on naming and content analysis.

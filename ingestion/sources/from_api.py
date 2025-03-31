@@ -3,7 +3,7 @@ import requests
 import logging
 from typing import Union
 from ingestion.base.dataset_loader import BaseDatasetLoader
-
+from utils.data_flattener import DataFlattener
 
 class APIDatasetLoader(BaseDatasetLoader):
     """
@@ -26,7 +26,8 @@ class APIDatasetLoader(BaseDatasetLoader):
         json_path: str = None,
         timeout: int = 15,
         pagination: dict = None,
-        max_pages: int = 10
+        max_pages: int = 10,
+        disaggregate: bool = False
     ) -> pd.DataFrame:
         """
         Carga datos desde una API REST.
@@ -42,6 +43,7 @@ class APIDatasetLoader(BaseDatasetLoader):
             timeout (int): Tiempo máximo de espera.
             pagination (dict): Config dict con paginación (ej: {"param": "offset", "step": 100}).
             max_pages (int): Límite de iteraciones para paginación.
+            disaggregate (bool): Si True, aplana la estructura anidada.
 
         Returns:
             pd.DataFrame: Dataset combinado de todas las páginas.
@@ -114,7 +116,18 @@ class APIDatasetLoader(BaseDatasetLoader):
                 self.logger.error("Error en petición API: %s", e, exc_info=True)
                 break
 
-        df = pd.DataFrame(results)
+        # Procesar la estructura anidada usando DataFlattener para extraer el máximo de información
+        flattener = DataFlattener(
+            separator='_',
+            max_depth=None,
+            flatten_collections=True,
+            parse_json=True,
+            convert_keys_to_str=True,
+            detect_cycles=True,
+            error_handling='raise'
+        )
+
+        df = flattener.process(results, disaggregate)
         self.metadata["row_count"] = len(df)
         self.metadata["columns"] = df.columns.tolist()
         self.metadata["status"] = "success" if len(df) > 0 else "empty"

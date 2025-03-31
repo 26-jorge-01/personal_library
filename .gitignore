@@ -1,4 +1,4 @@
 demos/reports
-demos/config/__pycache__
-ingestion/*/__pycache__
+*__pycache__*
 *.parquet
+.env
