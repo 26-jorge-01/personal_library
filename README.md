@@ -20,13 +20,14 @@ Esta estructura permite reutilizar, escalar y mantener de manera efectiva todo e
 
 ## Estructura del Proyecto
 
+```bash
 project_root/
 ├── demos/ # Notebooks y scripts demostrativos para validar y ejemplificar el uso de cada componente. 
 ├── ingestion/ # Módulos para la ingesta de datos. Incluye conectores (por ejemplo, desde Socrata) y motores de gobernanza. 
-├── loaders/ # Conectores y módulos para cargar datos desde diversas fuentes (archivos, bases de datos, etc.). 
 ├── transformers/ # Componentes para transformar y procesar datos: limpieza, normalización, enriquecimiento, etc. 
 ├── utils/ # Utilidades y funciones auxiliares compartidas por todo el proyecto (logging, configuración, helpers). 
 └── README.md # Este documento, que explica la visión, estructura y uso del proyecto.
+```
 
 Cada carpeta está pensada para ser escalable. Por ejemplo, mientras que `ingestion` se encarga de la extracción y validación de datos, las carpetas `loaders`, `transformers` y `utils` se ampliarán conforme se desarrollen nuevas funcionalidades.
 
@@ -48,29 +49,13 @@ Cada carpeta está pensada para ser escalable. Por ejemplo, mientras que `ingest
 
 ---
 
-## Requisitos Previos
-
-- **Python:** Versión 3.7 o superior.
-- **Dependencias Principales:**
-  - `pandas`
-  - `sodapy`
-  - `pyyaml`
-  - `requests`
-  - `numpy`
-
-Para instalar las dependencias, ejecuta:
-
-```bash
-pip install -r requirements.txt
-```
-
 ## Instalación y Configuración
 
 Clona el repositorio:
 
 ```bash
-git clone <URL_DEL_REPOSITORIO>
-cd <NOMBRE_DEL_REPOSITORIO>
+git clone https://github.com/26-jorge-01/personal-library.git
+cd personal-library
 ```
 
 Configura el entorno de desarrollo (opcional):
@@ -93,23 +78,9 @@ Edita o crea archivos de política YAML en ingestion/governance/policies/ para d
 
 ## Guía de Uso
 
-### Ejecución del Pipeline de Ingesta
-
-El proceso completo se orquesta a través del script principal ubicado en ingestion/main_ingestion.py. Al ejecutarlo, el sistema:
-
-- Se conecta a la fuente de datos (por ejemplo, Socrata) utilizando conectores en ingestion o loaders.
-- Aplica validaciones y políticas de calidad mediante el motor de gobernanza.
-- Registra metadatos y genera un archivo de auditoría (por ejemplo, en reports/audit_log.parquet).
-
-Para ejecutar el pipeline, utiliza:
-
-```bash
-python ingestion/main_ingestion.py
-```
-
 ### Uso Interactivo
 
-La carpeta demos contiene notebooks (como demo_socrata.ipynb) que ilustran:
+La carpeta demos contiene notebooks que ilustran:
 
 - Cómo configurar y ejecutar la extracción de datos.
 
@@ -174,5 +145,5 @@ Este proyecto se distribuye bajo la Licencia MIT. Consulta el archivo LICENSE pa
 
 Para preguntas, sugerencias o reportar problemas, por favor contacta a:
 
-Nombre: [Tu Nombre]
-Email: [tu.email@example.com]
+* Nombre: Jorge Ibáñez
+* Email: jonan0804@gmail.com
