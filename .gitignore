@@ -2,3 +2,4 @@ demos/reports
 *__pycache__*
 *.parquet
 .env
+.venv
