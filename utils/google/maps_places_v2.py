@@ -133,3 +133,19 @@ class GoogleMapsPlacesService:
         if max_height:
             params['maxheight'] = max_height
         return self._request("photo", params)
+    
+    def get_reviews(self, place_id, language=None):
+        """
+        Obtiene las reseñas de un lugar dado su place_id.
+
+        :param place_id: Identificador del lugar en Google Maps.
+        :param language: (Opcional) Código de idioma para la respuesta (ej. "es" o "en").
+        :return: Lista de reseñas o None si no se encuentran.
+        """
+        # Especificamos el campo 'reviews' para reducir el payload (además, se puede solicitar el nombre)
+        details = self.place_details(place_id, language=language, fields="name,reviews")
+        if details and details.get("result") and details["result"].get("reviews"):
+            return details["result"]["reviews"]
+        else:
+            logger.info("No se encontraron reseñas para el place_id: %s", place_id)
+            return None
