@@ -3,3 +3,5 @@ demos/reports
 *.parquet
 .env
 .venv
+*.json
+*.pickle

@@ -5,3 +5,7 @@ pyarrow==19.0.1
 scipy==1.15.2
 scikit-learn==1.6.1
 python-dotenv==1.1.0
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+google-api-python-client
