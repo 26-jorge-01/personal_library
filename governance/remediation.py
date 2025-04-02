@@ -1,7 +1,7 @@
 import os
 import base64
 import pandas as pd
-from ingestion.governance.engine_policy_autogen import get_or_create_policy, infer_column_type
+from governance.engine_policy_autogen import get_or_create_policy, infer_column_type
 
 def apply_encryption(value):
     """

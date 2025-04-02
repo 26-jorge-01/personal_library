@@ -3,7 +3,7 @@ import re
 import yaml
 import pandas as pd
 from datetime import datetime
-from ingestion.governance.rules import AVAILABLE_RULES
+from governance.rules import AVAILABLE_RULES
 
 POLICY_FOLDER = os.path.join(os.path.dirname(__file__), "policies")
 
