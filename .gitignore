@@ -5,3 +5,4 @@ demos/reports
 .venv
 *.json
 *.pickle
+*.csv

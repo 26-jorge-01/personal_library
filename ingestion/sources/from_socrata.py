@@ -13,7 +13,6 @@ class SocrataDatasetLoader(BaseDatasetLoader):
         super().__init__(source_name="socrata")
         self.client = client
         self.logger = logging.getLogger(__name__)
-        self.logger.setLevel(logging.DEBUG)
 
     def load_data(self, dataset_code: str, filters: dict = None, limit: int = 1000000) -> pd.DataFrame:
         """

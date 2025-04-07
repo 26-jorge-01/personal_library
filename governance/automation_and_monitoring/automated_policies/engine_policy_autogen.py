@@ -4,6 +4,7 @@ import yaml
 import pandas as pd
 from datetime import datetime
 from governance.rules import AVAILABLE_RULES
+from utils.file_management.folder_searcher import find_or_create_folder
 
 POLICY_FOLDER = os.path.join(os.path.dirname(__file__), "policies")
 
@@ -257,7 +258,8 @@ def load_policy(policy_path: str) -> dict:
         return yaml.safe_load(file)
 
 def get_or_create_policy(df: pd.DataFrame, policy_filename: str):
-    policy_path = os.path.join(POLICY_FOLDER, policy_filename)
+    policy_path = find_or_create_folder('policies')
+    policy_path = os.path.join(policy_path, policy_filename)
 
     if os.path.exists(policy_path):
         return load_policy(policy_path)

@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from governance.engine_policy_autogen import (
+from governance.automation_and_monitoring.automated_policies.engine_policy_autogen import (
     get_or_create_policy,
     infer_column_type,
     define_integrity
